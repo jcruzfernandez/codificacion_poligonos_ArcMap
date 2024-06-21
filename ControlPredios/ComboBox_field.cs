@@ -6,6 +6,8 @@ namespace ControlPredios
     public class ComboBox_field : ESRI.ArcGIS.Desktop.AddIns.ComboBox
     {
         private static ComboBox_field _instance;
+        public static string selectedFieldName;
+        public static IField selectedField;
         public static ComboBox_field Instance
         {
             get
@@ -31,7 +33,7 @@ namespace ControlPredios
 
         public void UpdateComboBoxFields()
         {
-            // Limpiar los ítems existentes en el ComboBox
+            // Limpiar los ítems existentes en el ComboBoxFields
             this.Clear();
 
             // Verificar si hay una capa seleccionada en ComboBox1
@@ -51,6 +53,15 @@ namespace ControlPredios
             }
         }
 
+        protected override void OnSelChange(int index)
+        {
+            if (index != -1)
+            { 
+            var getField = this.GetItem(index);
+            selectedField = getField.Tag as IField;
+            selectedFieldName = getField.Caption;
+            }
+        }
 
     }
 

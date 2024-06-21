@@ -25,6 +25,8 @@ namespace ControlPredios
         bool mousePresionado;
         int indice = 1;
         string layerName;
+        string fieldOrderName = "ORDEN";
+        string layerNameTempPoints = "PuntosTemporales";
         List<KeyValuePair<int, IPoint>> puntosConIndice = new List<KeyValuePair<int, IPoint>>();
         private static List<IElement> elementosPunto = new List<IElement>();
         private ISpatialReference spatialReference;
@@ -33,6 +35,12 @@ namespace ControlPredios
 
         public LineSelection()
         {
+        }
+        protected override void OnActivate()
+        {
+            // Cambiar el cursor a una cruz cuando la herramienta se activa
+            //System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Cross;
+            Cursor = System.Windows.Forms.Cursors.Cross;
         }
 
         protected override void OnMouseDown(MouseEventArgs arg)
@@ -90,6 +98,7 @@ namespace ControlPredios
             mousePresionado = false;
             newLineFeedBack = null;
             EliminarPuntos(mapa, vista);
+            EliminarCapaPuntosTemp();
             IFeatureLayer featureLayerPoints = CrearFeatureLayerEnMemoria(puntosConIndice);
 
             for (int i = 0; i < mapa.LayerCount; i++)
@@ -118,30 +127,34 @@ namespace ControlPredios
                 }
             }
 
-
-            //GeoProcessor geoprocessor = new GeoProcessor();
-            //// Opcional: Configura el geoprocesador para sobrescribir la salida
-            //geoprocessor.OverwriteOutput = true;
-            ////MessageBox.Show("Capa seleccionada: " + layerName);
-            //try
-            //{
-            //    geoprocessor.AddToolbox(pathTool);
-            //    // Crea un objeto IVariantArray para almacenar los parámetros de la herramienta
-            //    IVariantArray parameters = new VarArrayClass();
-            //    parameters.Add(layerName);
-            //    parameters.Add(featureLayerPoints);
-            //    geoprocessor.Execute("codificacionPredios", parameters, null);
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine("Error al ejecutar la herramienta: " + e.Message);
-            //    // Manejo adicional de errores aquí
-            //}
+            IGeoProcessor2 geoprocessor = new GeoProcessorClass();
+            // Opcional: Configura el geoprocesador para sobrescribir la salida
+            geoprocessor.OverwriteOutput = true;
+            // Agregar el geoproceso al historial de geoprocesamiento de ArcMap
+            geoprocessor.AddToResults = true;
+            try
+            {
+                geoprocessor.AddToolbox(pathTool);
+                // Crea un objeto IVariantArray para almacenar los parámetros de la herramienta
+                IVariantArray parameters = new VarArrayClass();
+                parameters.Add(layerName);
+                parameters.Add(layerNameTempPoints);
+                parameters.Add(fieldOrderName);
+                IGeoProcessorResult results = geoprocessor.Execute("codificacionPrediosLine", parameters, null);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error al ejecutar la herramienta: " + e.Message);
+                // Manejo adicional de errores aquí
+            }
+            // Limpiar la lista antes de reutilizarla
+            puntosConIndice.Clear();
+            indice = 1;
         }
 
         protected override void OnUpdate()
         {
-
+            Enabled = ComboBox_field.selectedFieldName != null;
         }
 
         public static IElement DrawPointClick(IPoint point, IMap map, IActiveView vista)
@@ -156,6 +169,7 @@ namespace ControlPredios
             ISimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbolClass();
             simpleMarkerSymbol.Style = esriSimpleMarkerStyle.esriSMSCross;  //esriSimpleMarkerStyle.esriSMSCircle;
             simpleMarkerSymbol.Size = 11;
+            simpleMarkerSymbol.Angle = 45;
             simpleMarkerSymbol.Color = color;
 
             // Crear un elemento de punto y asignarle el símbolo
@@ -194,6 +208,41 @@ namespace ControlPredios
             }
         }
 
+        public void EliminarCapaPuntosTemp()
+        {
+            // Obtener el documento de ArcMap y el mapa enfocado
+            IMxDocument mxDoc = (IMxDocument)ArcMap.Application.Document;
+            IMap map = mxDoc.FocusMap;
+            // IFeatureClass featureClass;
+            // Agregar todas las capas del mapa al ComboBox
+            for (int i = 0; i < map.LayerCount; i++)
+            {
+                ILayer layer = map.get_Layer(i);
+                if (layer is IFeatureLayer)
+                {
+                    IFeatureLayer featureLayer = (IFeatureLayer)layer;
+                    if (layer.Name.Equals(layerNameTempPoints, StringComparison.OrdinalIgnoreCase))
+                    {
+                        //featureLayer = layer as IFeatureLayer;
+                        //featureClass = featureLayer.FeatureClass;
+                        //// Eliminar todos los registros de la capa
+                        //ITable table = featureClass as ITable;
+                        //ICursor cursor = table.Update(null, false);
+                        //IRow row;
+                        //while ((row = cursor.NextRow()) != null)
+                        //{
+                        //    row.Delete();
+                        //    //row = cursor.NextRow();
+                        //}
+                        //cursor.Flush();
+                        // Eliminar la capa del mapa
+                        map.DeleteLayer(layer);
+                        break; // Salir del bucle después de eliminar la capa
+                    }
+                }
+            }
+        }
+
         public IFeatureLayer CrearFeatureLayerEnMemoria(List<KeyValuePair<int, IPoint>> listaPuntos)
         {
             // Obtener el documento actual de ArcMap
@@ -201,6 +250,29 @@ namespace ControlPredios
             IMap map = mxDocument.FocusMap;
             IFeatureLayer featureLayer = null;
             IFeatureClass featureClass;
+
+            //// Verificar si existe un FeatureLayer con el nombre especificado y eliminalo
+            //for (int i = map.LayerCount - 1; i >= 0; i--)
+            //{
+            //    ILayer layer = map.get_Layer(i);
+            //    if (layer is IFeatureLayer && layer.Name.Equals(layerNameTempPoints, StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        featureLayer = layer as IFeatureLayer;
+            //        featureClass = featureLayer.FeatureClass;
+
+            //        // Eliminar todos los registros de la capa
+            //        ITable table = featureClass as ITable;
+            //        ICursor cursor = table.Update(null, false);
+            //        IRow row;
+            //        while ((row = cursor.NextRow()) != null)
+            //        {
+            //            cursor.DeleteRow();
+            //        }
+            //        cursor.Flush();
+            //        map.DeleteLayer(layer);
+            //    }
+            //}
+
             // Verificar si hay al menos una capa en el mapa
             if (map.LayerCount > 0)
             {
@@ -223,7 +295,7 @@ namespace ControlPredios
             }
             // Crear un workspace en memoria
             IWorkspaceFactory workspaceFactory = new InMemoryWorkspaceFactoryClass();
-            IWorkspaceName workspaceName = workspaceFactory.Create("", "MyInMemoryWorkspace", null, 0);
+            IWorkspaceName workspaceName = workspaceFactory.Create("", "GPInMemoryWorkspace", null, 0);
             IName name = (IName)workspaceName;
             IWorkspace inMemoryWorkspace = (IWorkspace)name.Open();
 
@@ -243,7 +315,7 @@ namespace ControlPredios
             //Crear campo ORDEN
             IField ordField = new FieldClass();
             IFieldEdit ordFieldEdit = (IFieldEdit)ordField;
-            ordFieldEdit.Name_2 = "ORDEN";
+            ordFieldEdit.Name_2 = fieldOrderName;
             ordFieldEdit.Type_2 = esriFieldType.esriFieldTypeInteger;
             fieldsEdit.AddField(ordField);
 
@@ -269,7 +341,7 @@ namespace ControlPredios
             foreach (var par in listaPuntos)
             {
                 IFeature feature = featureClassmain.CreateFeature();
-                feature.set_Value(feature.Fields.FindField("ORDEN"), par.Key);
+                feature.set_Value(feature.Fields.FindField(fieldOrderName), par.Key);
                 feature.Shape = par.Value;
                 feature.Store();
             }
@@ -277,7 +349,7 @@ namespace ControlPredios
             // Crear un FeatureLayer a partir del FeatureClass
             IFeatureLayer featureLayermain = new FeatureLayerClass();
             featureLayermain.FeatureClass = featureClassmain;
-            featureLayermain.Name = "PuntosTemporales";
+            featureLayermain.Name = layerNameTempPoints;
 
             // Agregar el feature layer creado al mapa
             if (map != null && featureLayermain != null)

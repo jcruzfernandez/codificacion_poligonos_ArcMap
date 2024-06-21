@@ -139,16 +139,20 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AddInContent>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="scripts\codificacionPrediosLine.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <AddInContent Include="Images\LineSelection.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AddInContent>
     <AddInContent Include="Images\ComboBox1.png" />
     <AddInContent Include="Images\ComboBox_field.png" />
-    <Content Include="scripts\codificacionPredios.py">
+    <None Include="scripts\codificacionPredios.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="scripts\ToolboxMain.tbx">

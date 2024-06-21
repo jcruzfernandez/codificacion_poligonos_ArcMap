@@ -16,7 +16,7 @@ namespace ControlPredios
     public class ComboBox1 : ESRI.ArcGIS.Desktop.AddIns.ComboBox
     {
         private IActiveViewEvents_Event activeViewEvents;
-        public string layerSelected;
+        public static string selectedLayerName;
         public static IFeatureLayer selectedLayer;
         public ComboBox1()
         {
@@ -65,22 +65,23 @@ namespace ControlPredios
             }
         }
 
-
         protected override void OnSelChange(int index)
         {
             //base.OnSelChange(cookie);
             // Actualizar la capa seleccionada
             //selectedLayer = this.GetItem(index);
-            var selectedLyr = this.GetItem(index);
-            selectedLayer = selectedLyr.Tag as IFeatureLayer;
-            if (selectedLayer != null)
+            if (index != -1)
             {
-                ComboBox_field.Instance.UpdateComboBoxFields();
-                //    MessageBox.Show($"Capa seleccionada: {selectedLyr.Caption}", "Información de la capa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var selectedLyr = this.GetItem(index);
+                selectedLayer = selectedLyr.Tag as IFeatureLayer;
+                selectedLayerName = selectedLyr.Caption;
+                if (selectedLayer != null)
+                {
+                    ComboBox_field.Instance.UpdateComboBoxFields();
+                    //  MessageBox.Show($"Capa seleccionada: {selectedLyr.Caption}", "Información de la capa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-
     }
-
 
         protected override void OnUpdate()
         {

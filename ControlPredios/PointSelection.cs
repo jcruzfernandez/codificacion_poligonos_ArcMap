@@ -71,6 +71,11 @@ namespace ControlPredios
             vista.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
         }
 
+        protected override void OnUpdate()
+        {
+            Enabled = ComboBox_field.selectedFieldName != null;
+        }
+
         public static bool IsFeatureIntersected(IGeometry selectGeom, IFeatureLayer featureLayer)
         {
             // Prepara una consulta para encontrar entidades que intersecten con la geometría de selección
@@ -94,16 +99,19 @@ namespace ControlPredios
 
         protected override void OnDoubleClick()
         {
-            GeoProcessor geoprocessor = new GeoProcessor();
+            //GeoProcessor geoprocessor = new GeoProcessor();
+            IGeoProcessor2 geoprocessor = new GeoProcessorClass();
             // Opcional: Configura el geoprocesador para sobrescribir la salida
             geoprocessor.OverwriteOutput = true;
             //MessageBox.Show("Capa seleccionada: " + layerName);
+            geoprocessor.AddToResults = true;
             try
             {
                 geoprocessor.AddToolbox(pathTool);
                 // Crea un objeto IVariantArray para almacenar los parámetros de la herramienta
                 IVariantArray parameters = new VarArrayClass();
                 parameters.Add(layerName);
+                parameters.Add(ComboBox_field.selectedFieldName);
                 geoprocessor.Execute("codificacionPredios",parameters,null);
             }
             catch (Exception e)
