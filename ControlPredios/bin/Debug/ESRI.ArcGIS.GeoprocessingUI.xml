@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>ESRI.ArcGIS.GeoprocessingUI</name>
+  </assembly>
+  <members>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IArcQuery">
+      <summary>Provides access to the methods on an Arc Info Query object.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IArcQuery.Expression">
+      <summary>The full ArcInfo selection expression.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IArcQuery.SelectMethod">
+      <summary>The ArcInfo selection method used with the expression.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IArcQuery.TokenType">
+      <summary>The type of token element in the expression.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IArcQueryBuilder">
+      <summary>Provides access to the methods on an Arc Info Query Builder object.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcQueryBuilder.CheckSyntax(ESRI.ArcGIS.Geodatabase.IDataElement,System.String)">
+      <summary>Checks the syntax of an expression without displaying query builder dialog.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcQueryBuilder.Show(ESRI.ArcGIS.Geodatabase.IDataElement,ESRI.ArcGIS.GeoprocessingUI.IArcQuerys)">
+      <summary>Displays the query builder dialog to build expressions.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IArcQuerys">
+      <summary>Provides access to the methods on a collection of Arc Info Query objects.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcQuerys.Add(System.String,System.String,System.String,System.String,System.Int16,System.Int16)">
+      <summary>Adds an IArcQuery object to querys collection .</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IArcQuerys.Count">
+      <summary>The number of elements in the querys collection.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IArcQuerys.Item(System.Object)">
+      <summary>The IArcQuery object in the collection at the specified index.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IArcQuerys.NewEnum">
+      <summary>Allows the enumeration of querys collection with the For...Each syntax.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcQuerys.Remove(System.Object)">
+      <summary>Removes an IArcQuery element from the querys collection.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox">
+      <summary>Provides access to methods on the ArcToolbox object.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox.AddToolbox(ESRI.ArcGIS.Geoprocessing.IGPToolbox)">
+      <summary>Adds the given toolbox to the ArcToolbox window.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox.CreateTool(ESRI.ArcGIS.Geoprocessing.esriGPToolType,System.Object,ESRI.ArcGIS.Geoprocessing.IGPToolExtensionFactory)">
+      <summary>Creates a new tool in the specified destination (toolbox or toolset).</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox.EditToolSource(ESRI.ArcGIS.Geoprocessing.IGPTool)">
+      <summary>Edits the source of the specified tool (if applicable).</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox.GetToolbyNameString(System.String)">
+      <summary>Returns a tool by name.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox.hWnd">
+      <summary>The handle to the ArcToolbox dockable window.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox.InvokeProcess(System.Int32,ESRI.ArcGIS.Geoprocessing.IMdProcess,ESRI.ArcGIS.esriSystem.IArray,System.Boolean)">
+      <summary>Invokes/executes the given process object, prompting the user for required input first.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox.InvokeTool(System.Int32,ESRI.ArcGIS.Geoprocessing.IGPTool,ESRI.ArcGIS.esriSystem.IArray,System.Boolean)">
+      <summary>Invokes/executes the given tool, prompting the user for required input first.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox.OnCreate(ESRI.ArcGIS.Framework.IApplication)">
+      <summary>Called after the ArcToolbox object is created to initialize it.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox.OnDestroy">
+      <summary>Called right before the ArcToolbox object is about to be destroyed.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox.Refresh">
+      <summary>Refreshes the contents of the ArcToolbox dockable window.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox.RemoveToolbox(ESRI.ArcGIS.Geoprocessing.IGPToolbox)">
+      <summary>Removes the given toolbox from the ArcToolbox window.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox.ShowToolHelp(System.Int32,ESRI.ArcGIS.Geoprocessing.IGPTool)">
+      <summary>Opens the help panel for the given geoprocessing tool.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2">
+      <summary>Provides access to methods on the ArcToolbox object.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.InvokeModalProcess(System.Int32,ESRI.ArcGIS.Geoprocessing.IMdProcess,ESRI.ArcGIS.esriSystem.IArray,System.Boolean)">
+      <summary>Invokes/executes the given process object, prompting the user for required input first.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.InvokeModalTool(System.Int32,ESRI.ArcGIS.Geoprocessing.IGPTool,ESRI.ArcGIS.esriSystem.IArray,System.Boolean,System.Boolean@,ESRI.ArcGIS.Geodatabase.IGPMessages@)">
+      <summary>Invokes/executes the given tool, prompting the user for required input first.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.AddToolbox(ESRI.ArcGIS.Geoprocessing.IGPToolbox)">
+      <summary>Adds the given toolbox to the ArcToolbox window.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.CreateTool(ESRI.ArcGIS.Geoprocessing.esriGPToolType,System.Object,ESRI.ArcGIS.Geoprocessing.IGPToolExtensionFactory)">
+      <summary>Creates a new tool in the specified destination (toolbox or toolset).</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.EditToolSource(ESRI.ArcGIS.Geoprocessing.IGPTool)">
+      <summary>Edits the source of the specified tool (if applicable).</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.GetToolbyNameString(System.String)">
+      <summary>Returns a tool by name.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.hWnd">
+      <summary>The handle to the ArcToolbox dockable window.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.InvokeProcess(System.Int32,ESRI.ArcGIS.Geoprocessing.IMdProcess,ESRI.ArcGIS.esriSystem.IArray,System.Boolean)">
+      <summary>Invokes/executes the given process object, prompting the user for required input first.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.InvokeTool(System.Int32,ESRI.ArcGIS.Geoprocessing.IGPTool,ESRI.ArcGIS.esriSystem.IArray,System.Boolean)">
+      <summary>Invokes/executes the given tool, prompting the user for required input first.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.OnCreate(ESRI.ArcGIS.Framework.IApplication)">
+      <summary>Called after the ArcToolbox object is created to initialize it.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.OnDestroy">
+      <summary>Called right before the ArcToolbox object is about to be destroyed.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.Refresh">
+      <summary>Refreshes the contents of the ArcToolbox dockable window.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.RemoveToolbox(ESRI.ArcGIS.Geoprocessing.IGPToolbox)">
+      <summary>Removes the given toolbox from the ArcToolbox window.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IArcToolbox2.ShowToolHelp(System.Int32,ESRI.ArcGIS.Geoprocessing.IGPTool)">
+      <summary>Opens the help panel for the given geoprocessing tool.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IArcToolboxExtension">
+      <summary>Provides access to methods on the ArcToolbox extension object.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IArcToolboxExtension.ArcToolbox">
+      <summary>The ArcToolbox associated with the ArcToolboxExtension.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IConnectionPoint">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IConnectionPoint.Advise(System.Object,System.UInt32@)">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IConnectionPoint.EnumConnections(ESRI.ArcGIS.GeoprocessingUI.IEnumConnections@)">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IConnectionPoint.GetConnectionInterface(System.Guid@)">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IConnectionPoint.GetConnectionPointContainer(ESRI.ArcGIS.GeoprocessingUI.IConnectionPointContainer@)">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IConnectionPoint.Unadvise(System.UInt32)">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IConnectionPointContainer">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IConnectionPointContainer.EnumConnectionPoints(ESRI.ArcGIS.GeoprocessingUI.IEnumConnectionPoints@)">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IConnectionPointContainer.FindConnectionPoint(System.Guid@,ESRI.ArcGIS.GeoprocessingUI.IConnectionPoint@)">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IEnumConnectionPoints">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IEnumConnectionPoints.Clone(ESRI.ArcGIS.GeoprocessingUI.IEnumConnectionPoints@)">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IEnumConnectionPoints.RemoteNext(System.UInt32,ESRI.ArcGIS.GeoprocessingUI.IConnectionPoint@,System.UInt32@)">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IEnumConnectionPoints.Reset">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IEnumConnectionPoints.Skip(System.UInt32)">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IEnumConnections">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IEnumConnections.Clone(ESRI.ArcGIS.GeoprocessingUI.IEnumConnections@)">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IEnumConnections.RemoteNext(System.UInt32,ESRI.ArcGIS.GeoprocessingUI.tagCONNECTDATA@,System.UInt32@)">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IEnumConnections.Reset">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IEnumConnections.Skip(System.UInt32)">
+      <summary>This is a Microsoft Type, see the MSDN help.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IEnumMDControls">
+      <summary>MD Control Enumeration Interface.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IEnumMDControls.Next">
+      <summary>See the ESRI SDK Help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IEnumMDControls.Reset">
+      <summary>See the ESRI SDK Help.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IGPToolCommand">
+      <summary>Provides access to toolbox's tool.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.ILreEventPropertiesCtrl">
+      <summary>Provides access to route event property control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdArcInfoItemCtrl">
+      <summary>Provides access to Arc Info item control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdArcInfoItemListCtrl">
+      <summary>Provides access to Arc Info item list control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdAreaUnitCtrl">
+      <summary>Provides access to the area unit control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdAssignFieldAlias2Ctrl">
+      <summary>Provides access to assign field alias control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdAssignFieldAliasCtrl">
+      <summary>Provides access to assign field alias control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdAttributeMapCtrl">
+      <summary>Provides access to the attribute map control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdBatchCtrl">
+      <summary>Provides access to the batch control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdBooleanCtrl">
+      <summary>Provides access to boolean control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdCalculatorCtrl">
+      <summary>Provides access to the calculator control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdCellSizeXYCtrl">
+      <summary>Provides access to cellsize control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdCLFieldMapCtrl">
+      <summary>IMdCLFieldMapCtrl Interface</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdCLSelectionCriteriaCtrl">
+      <summary>IMdSelectionCriteriaCtrl Interface</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdCompositeCtrl">
+      <summary>Provides access to composite control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdControlSupport">
+      <summary>Provides access to the support methods on an element control object.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IMdControlSupport.AllowMultipleSelection">
+      <summary>Indicates whether the control should allow multiple selections or not.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdDatasetCtrl">
+      <summary>Provides access to dataset control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdDateCtrl">
+      <summary>Provides access to date control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdDoubleCtrl">
+      <summary>Provides access to double control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdDynamicListCtrl">
+      <summary>Provides access to dynamic list control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdElementCtrl">
+      <summary>Provides access to the methods on an element control object.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementCtrl.Initialize(ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor,System.String,System.String)">
+      <summary>Initializes the state of the element control object.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementCtrl.Refresh">
+      <summary>Called when the control should update it's display with the current property value(s).</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementCtrl.Uninitialize">
+      <summary>Uninitializes the element control object.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdElementCtrl2">
+      <summary>Provides access to the methods on an element control object.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementCtrl2.Apply">
+      <summary>Called when the control should apply its changes.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialog">
+      <summary>Provides access to the methods on an element dialog object.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialog.DoModal(System.Int32)">
+      <summary>Display a modal dialog to edit the properties of the element contained by the given element editor.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialog.ElementChanged">
+      <summary>Indicates whether or not the element was modified after calling DoModal().</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialog.ElementEditor">
+      <summary>The element editor containing the element being edited/displayed in the dialog.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialog.GetDefaultElementEditor(System.Object)">
+      <summary>Returns the default element editor for the given object.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialog.Hide">
+      <summary>Closes the dialog window if it was previously displayed by calling Show().</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialog.hWnd">
+      <summary>The handle of the dialog window.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialog.hWndParent">
+      <summary>The handle of the dialogs parent window.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialog.IsVisible">
+      <summary>Indicates whether or not the dialog is currently being displayed as a result of calling the Show() method.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialog.SetButtons(ESRI.ArcGIS.GeoprocessingUI.esriElementDialogButtonType)">
+      <summary>Flag indicating whether or not to show the Apply button.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialog.Show(System.Int32)">
+      <summary>Displays a modeless dialog to edit the properties of the element contained by the given element editor.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialog.Title">
+      <summary>The title of the dialog window.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialogEvents">
+      <summary>Provides access to element dialog events.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialogEvents_Event">
+      <summary>Provides access to element dialog events.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialogEvents.OnApply">
+      <summary>Called when the APPLY button is selected.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialogEvents_Event.OnApply">
+      <summary>Called when the APPLY button is selected.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialogEvents.OnCancel">
+      <summary>Called when the CANCEL button is selected.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialogEvents_Event.OnCancel">
+      <summary>Called when the CANCEL button is selected.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialogEvents.OnOk">
+      <summary>Called when the OK button is selected.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.GeoprocessingUI.IMdElementDialogEvents_Event.OnOk">
+      <summary>Called when the OK button is selected.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor">
+      <summary>Provides access to the methods on an element editor object.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.ApplyChanges">
+      <summary>Applies the current changes to the element being edited by the element editor.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.Callback">
+      <summary>The callback object associated with the element editor.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.EditEnvironments(System.Int32)">
+      <summary>Displays the dialog to edit the environments for the element.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.Element">
+      <summary>The element being edited by the element editor.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.ElementChanged">
+      <summary>Indicates whether the element being edited has been modified.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.GetChoiceList(ESRI.ArcGIS.Geodatabase.IGPDataType,ESRI.ArcGIS.Geodatabase.IGPDomain)">
+      <summary>Returns an enumeration of possible values for the given data type and domain.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.GetDataType(System.String)">
+      <summary>Returns the data type of the given property.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.GetDirection(System.String)">
+      <summary>Returns the direction type of the given property.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.GetDisplayName(System.String)">
+      <summary>Returns the display name of the given property.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.GetDomain(System.String)">
+      <summary>Returns the domain (if any) of the given property.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.GetEnabled(System.String)">
+      <summary>Returns whether the control for the given property should be enabled.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.GetMessage(System.String)">
+      <summary>Returns the last (validation) message of the given property.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.GetRegisteredControls">
+      <summary>Returns an enumeration of registered controls</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.GetValue(System.String)">
+      <summary>Returns the current value of the given property.</summary>
+    </member>
+    <member name="P:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.GxDialog">
+      <summary>The GxDialog object cached by the element editor.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.OnElementChanged">
+      <summary>Called to indicate that the element being edited by the element editor has been modified.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.RegisterControl(ESRI.ArcGIS.GeoprocessingUI.IMdElementCtrl,System.String,System.String)">
+      <summary>Registers the given control with the element editor.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.SetValue(System.String,ESRI.ArcGIS.Geodatabase.IGPValue)">
+      <summary>Sets the value of the given property.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.ShowHelp(System.Int32)">
+      <summary>Displays the help for the element being edited.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditor.UnregisterControls">
+      <summary>Unregisters all controls currently referenced by the element editor.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditorCallback">
+      <summary>Provides access to the methods on an element editor callback object.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdElementEditorCallback.OnElementChanged">
+      <summary>Called when the element being edited by the element editor has been modified.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdEnvelopeCtrl">
+      <summary>Provides access to envelope control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdEnvSpatRefCtrl">
+      <summary>Provides access to environment spatial reference control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdExtent2Ctrl">
+      <summary>Provides access to the Extent2 control</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdExtentCtrl">
+      <summary>Provides access to extent control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdFeatureClassCtrl">
+      <summary>Provides access to Arc Info feature class control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdFieldCtrl">
+      <summary>Provides access to field control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdFieldInfoCtrl">
+      <summary>Provides access to field info control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdFieldListCtrl">
+      <summary>Provides access to field list control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdFieldMapCtrl">
+      <summary>Provides access to the field map control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdFileCtrl">
+      <summary>Provides access to file control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdFRSCtrl">
+      <summary>Provides access to feature record set control.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IMdFRSCtrl.AddTemplate(ESRI.ArcGIS.Carto.IEditTemplate)">
+      <summary>Add the edit template to the template window.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdGeoTransformationCtrl">
+      <summary>Provides access to the geotransformation control</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdGraphDataCtrl">
+      <summary>Provides access to the graph data control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdInfoQueryCtrl">
+      <summary>Provides access to Arc Info query control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdLinearUnitCtrl">
+      <summary>Provides access to linear unit control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdLineSimplifyCtrl">
+      <summary>Provides access to line simplify control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdListCtrl">
+      <summary>Provides access to list control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdLocaleIDCtrl">
+      <summary>Provides access to locale ID control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdLocatorStyleCtrl">
+      <summary>Provides access to locator style control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdLongCtrl">
+      <summary>Provides access to long control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdMakeQueryTableCtrl">
+      <summary>Provides access to the make query table control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdMDFuncNamesCtrl">
+      <summary>Provides access to mosaic dataset location control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdMDomainCtrl">
+      <summary>Provides access to the M domain control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdMultiCtrl">
+      <summary>Provides access to multi value control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdPasswordCtrl">
+      <summary>Provides access to the password control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdPointCtrl">
+      <summary>Provides access to point control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdRadioCtrl">
+      <summary>Provides access to the radio control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdRandomDistributionCtrl">
+      <summary>IMdRandomDistributionCtrl Interface</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdRandomGeneratorCtrl">
+      <summary>IMdRandomGeneratorCtrl Interface</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdRasterGDBEnvCompressionCtrl">
+      <summary>Provides access to raster environment GDB compression control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdRasterGDBEnvPyramidCtrl">
+      <summary>Provides access to raster environment GDB pyramid control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdRasterGDBEnvStatisticsCtrl">
+      <summary>Provides access to raster environment GDB statistics control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdRasterGDBEnvTileSizeCtrl">
+      <summary>Provides access to raster environment GDB tile size control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdRasterInputCtrl">
+      <summary>Provides access to the raster type control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdRasterTypeCtrl">
+      <summary>Provides access to the raster type control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdRSCtrl">
+      <summary>Provides access to record set control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdSimpleTableCtrl">
+      <summary>Provides access to a simple table control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdSliderCtrl">
+      <summary>Provides access to the slider control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdSpatialReferenceCtrl">
+      <summary>Provides access to spatial reference control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdStaticTextCtrl">
+      <summary>Provides access to the static text control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdStringCtrl">
+      <summary>Provides access to string control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdStringHiddenCtrl">
+      <summary>Provides access to hidden string control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdTableCtrl">
+      <summary>Provides access to value table control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdTextEditorCtrl">
+      <summary>Provides access to the TextEditor control</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdTimeFormatCtrl">
+      <summary>Provides access to time format control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdTimeZoneCtrl">
+      <summary>Provides access to time zone control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdValueTableCtrl">
+      <summary>Provides access to the value table control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdWhereClauseCtrl">
+      <summary>Provides access to where clause control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdXYDomainCtrl">
+      <summary>Provides access to the XY domain control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IMdZDomainCtrl">
+      <summary>Provides access to the Z domain control.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.IProtectNameGeoprocessingUI">
+      <summary>Provides access to dummy methods protecting name correctness.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IProtectNameGeoprocessingUI.ProtectOLE_COLOR(System.Int32)">
+      <summary>See the ESRI SDK Help.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.GeoprocessingUI.IProtectNameGeoprocessingUI.ProtectOLE_HANDLE(System.Int32)">
+      <summary>See the ESRI SDK Help.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.ArcToolbox">
+      <summary>See the ESRI SDK Help.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.ArcToolboxClass">
+      <summary>See the ESRI SDK Help.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.esriElementDialogButtonType">
+      <summary>Type that describes the buttons visible on the element dialog.</summary>
+    </member>
+    <member name="F:ESRI.ArcGIS.GeoprocessingUI.esriElementDialogButtonType.esriOkCancel">
+      <summary>OK and CANCEL buttons are visible.</summary>
+    </member>
+    <member name="F:ESRI.ArcGIS.GeoprocessingUI.esriElementDialogButtonType.esriOkCancelApply">
+      <summary>OK, CANCEL, and APPLY buttons are visible.</summary>
+    </member>
+    <member name="F:ESRI.ArcGIS.GeoprocessingUI.esriElementDialogButtonType.esriOkCancelEnvironments">
+      <summary>OK, CANCEL, and ENVIRONMENTS buttons are visible.</summary>
+    </member>
+    <member name="F:ESRI.ArcGIS.GeoprocessingUI.esriElementDialogButtonType.esriClose">
+      <summary>Close button is visible.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.GeoprocessingUI.tagCONNECTDATA">
+      <summary>See the ESRI SDK Help.</summary>
+    </member>
+  </members>
+</doc>

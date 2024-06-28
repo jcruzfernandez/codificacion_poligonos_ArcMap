@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Geoprocessing;
 using ESRI.ArcGIS.SystemUI;
 using ESRI.ArcGIS.DataSourcesGDB;
+using System.Reflection;
 
 namespace ControlPredios
 {
@@ -30,7 +31,7 @@ namespace ControlPredios
         List<KeyValuePair<int, IPoint>> puntosConIndice = new List<KeyValuePair<int, IPoint>>();
         private static List<IElement> elementosPunto = new List<IElement>();
         private ISpatialReference spatialReference;
-        private static string currentPath = Directory.GetCurrentDirectory();
+        private static string currentPath = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         string pathTool = System.IO.Path.Combine(currentPath, "scripts", "ToolboxMain.tbx");
 
         public LineSelection()
@@ -100,29 +101,29 @@ namespace ControlPredios
             EliminarPuntos(mapa, vista);
             EliminarCapaPuntosTemp();
             IFeatureLayer featureLayerPoints = CrearFeatureLayerEnMemoria(puntosConIndice);
-
+            //layerName = ComboBox1.selectedLayerName;
             for (int i = 0; i < mapa.LayerCount; i++)
             {
                 ILayer layer = mapa.get_Layer(i);
                 if (layer is IFeatureLayer) // Asegúrate de que la capa sea una capa de entidades
                 {
                     IFeatureLayer featureLayer = (IFeatureLayer)layer;
-                    //IFeatureClass featureClass = featureLayer.FeatureClass;
-
-                    // Crea un buffer alrededor del punto de clic si es necesario para mejorar la selección
-                    // o ajusta la geometría de selección según tus necesidades
-                    IGeometry selectGeom = puntosConIndice[0].Value as IGeometry;
-
-                    // Verifica si el punto de clic intersecta alguna entidad de esta capa
-                    if (PointSelection.IsFeatureIntersected(selectGeom, featureLayer))
+                    IFeatureClass featureClass = featureLayer.FeatureClass;
+                    if (featureClass.ShapeType == esriGeometryType.esriGeometryPolygon)
                     {
-                        layerName = layer.Name;
-                        //MessageBox.Show("Capa seleccionada: " + layerName);
+                        // Crea un buffer alrededor del punto de clic si es necesario para mejorar la selección
+                        // o ajusta la geometría de selección según tus necesidades
+                        IGeometry selectGeom = puntosConIndice[0].Value as IGeometry;
+                        // Verifica si el punto de clic intersecta alguna entidad de esta capa
+                        if (PointSelection.IsFeatureIntersected(selectGeom, featureLayer) & layer.Name == ComboBox1.selectedLayerName)
+                        {
+                            layerName = layer.Name;
+                            //MessageBox.Show("Capa seleccionada: " + layerName);
 
-                        // Aquí puedes realizar el geoprocesamiento necesario con la capa seleccionada
-                        // Por ejemplo, pasando el layerName o el featureLayer a otro método
-
-                        break; // Sale del bucle si ya encontraste una capa que contiene el punto
+                            // Aquí puedes realizar el geoprocesamiento necesario con la capa seleccionada
+                            // Por ejemplo, pasando el layerName o el featureLayer a otro método
+                            break; // Sale del bucle si ya encontraste una capa que contiene el punto
+                        }
                     }
                 }
             }
@@ -134,6 +135,7 @@ namespace ControlPredios
             geoprocessor.AddToResults = true;
             try
             {
+                //MessageBox.Show(pathTool);
                 geoprocessor.AddToolbox(pathTool);
                 // Crea un objeto IVariantArray para almacenar los parámetros de la herramienta
                 IVariantArray parameters = new VarArrayClass();
@@ -144,7 +146,7 @@ namespace ControlPredios
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error al ejecutar la herramienta: " + e.Message);
+                MessageBox.Show("Error al ejecutar la herramienta: " + e.Message);
                 // Manejo adicional de errores aquí
             }
             // Limpiar la lista antes de reutilizarla

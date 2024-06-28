@@ -44,24 +44,30 @@ namespace ControlPredios
         {
             // Limpiar los ítems existentes en el ComboBox
             this.Clear();
-
-            // Obtener el documento de ArcMap y el mapa enfocado
-            IMxDocument mxDoc = (IMxDocument)ArcMap.Application.Document;
-            IMap map = mxDoc.FocusMap;
-
-            // Agregar todas las capas del mapa al ComboBox
-            for (int i = 0; i < map.LayerCount; i++)
-            {
-                ILayer layer = map.get_Layer(i);
-                if (layer is IFeatureLayer)
+            try
                 {
-                    IFeatureLayer featureLayer = (IFeatureLayer)layer;
-                    IFeatureClass featureClass = featureLayer.FeatureClass;
-                    if (featureClass.ShapeType == esriGeometryType.esriGeometryPolygon)
+                // Obtener el documento de ArcMap y el mapa enfocado
+                IMxDocument mxDoc = (IMxDocument)ArcMap.Application.Document;
+                IMap map = mxDoc.FocusMap;
+
+                // Agregar todas las capas del mapa al ComboBox
+                for (int i = 0; i < map.LayerCount; i++)
+                {
+                    ILayer layer = map.get_Layer(i);
+                    if (layer is IFeatureLayer)
                     {
-                        this.Add(layer.Name, layer);
+                        IFeatureLayer featureLayer = (IFeatureLayer)layer;
+                        IFeatureClass featureClass = featureLayer.FeatureClass;
+                        if (featureClass.ShapeType == esriGeometryType.esriGeometryPolygon)
+                        {
+                            this.Add(layer.Name, layer);
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error: " + ex.Message);
             }
         }
 

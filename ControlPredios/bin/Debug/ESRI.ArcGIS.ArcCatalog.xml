@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>ESRI.ArcGIS.ArcCatalog</name>
+  </assembly>
+  <members>
+    <member name="T:ESRI.ArcGIS.ArcCatalog.IGxDocumentEvents">
+      <summary>Provides access to events fired by ArcCatalog.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.ArcCatalog.IGxDocumentEvents_Event">
+      <summary>Provides access to events fired by ArcCatalog.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.ArcCatalog.IGxDocumentEvents.ActiveViewChanged">
+      <summary>Fired when the active view changes.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.ArcCatalog.IGxDocumentEvents_Event.ActiveViewChanged">
+      <summary>Fired when the active view changes.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.ArcCatalog.IGxDocumentEvents.CloseDocument">
+      <summary>Fired when a document is closed.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.ArcCatalog.IGxDocumentEvents_Event.CloseDocument">
+      <summary>Fired when a document is closed.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.ArcCatalog.IGxDocumentEvents.NewDocument">
+      <summary>Fired when a new document is created.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.ArcCatalog.IGxDocumentEvents_Event.NewDocument">
+      <summary>Fired when a new document is created.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.ArcCatalog.IGxDocumentEvents.OnContextMenu(System.Int32,System.Int32)">
+      <summary>Fired when a context menu should be displayed at the given xy location. Return true if handled.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.ArcCatalog.IGxDocumentEvents_Event.OnContextMenu">
+      <summary>Fired when a context menu should be displayed at the given xy location. Return true if handled.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.ArcCatalog.IGxDocumentEvents.OpenDocument">
+      <summary>Fired when a document is opened.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.ArcCatalog.IGxDocumentEvents_Event.OpenDocument">
+      <summary>Fired when a document is opened.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp">
+      <summary>Provides access to events fired by ArcCatalog.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp_Event">
+      <summary>Provides access to events fired by ArcCatalog.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp.ActiveViewChanged">
+      <summary>Fired when the active view changes.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp_Event.ActiveViewChanged">
+      <summary>Fired when the active view changes.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp.CloseDocument">
+      <summary>Fired when a document is closed.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp_Event.CloseDocument">
+      <summary>Fired when a document is closed.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp.NewDocument">
+      <summary>Fired when a new document is created.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp_Event.NewDocument">
+      <summary>Fired when a new document is created.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp.OnContextMenu(System.Int32,System.Int32)">
+      <summary>Fired when a context menu should be displayed at the given xy location. Return true if handled.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp_Event.OnContextMenu">
+      <summary>Fired when a context menu should be displayed at the given xy location. Return true if handled.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp.OpenDocument">
+      <summary>Fired when a document is opened.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp_Event.OpenDocument">
+      <summary>Fired when a document is opened.</summary>
+    </member>
+    <member name="M:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp.VBAReset">
+      <summary>Fired when VBA is reset.</summary>
+    </member>
+    <member name="E:ESRI.ArcGIS.ArcCatalog.IGxDocumentEventsDisp_Event.VBAReset">
+      <summary>Fired when VBA is reset.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.ArcCatalog.Application">
+      <summary>Esri ArcCatalog Application.</summary>
+    </member>
+    <member name="T:ESRI.ArcGIS.ArcCatalog.ApplicationClass">
+      <summary>Esri ArcCatalog Application.</summary>
+    </member>
+  </members>
+</doc>

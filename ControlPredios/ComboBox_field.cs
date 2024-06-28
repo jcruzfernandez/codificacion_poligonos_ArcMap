@@ -1,5 +1,6 @@
 ﻿using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
+using System;
 
 namespace ControlPredios
 {
@@ -35,21 +36,26 @@ namespace ControlPredios
         {
             // Limpiar los ítems existentes en el ComboBoxFields
             this.Clear();
-
-            // Verificar si hay una capa seleccionada en ComboBox1
-            IFeatureLayer selectedLayer = ComboBox1.selectedLayer;
-
-            if (selectedLayer != null)
+            try
             {
-                IFeatureClass featureClass = selectedLayer.FeatureClass;
-                IFields fields = featureClass.Fields;
-
-                // Agregar todos los campos de la capa seleccionada al ComboBox
-                for (int i = 0; i < fields.FieldCount; i++)
+                // Verificar si hay una capa seleccionada en ComboBox1
+                IFeatureLayer selectedLayer = ComboBox1.selectedLayer;
+                if (selectedLayer != null)
                 {
-                    IField field = fields.get_Field(i);
-                    this.Add(field.Name, field);
+                    IFeatureClass featureClass = selectedLayer.FeatureClass;
+                    IFields fields = featureClass.Fields;
+
+                    // Agregar todos los campos de la capa seleccionada al ComboBox
+                    for (int i = 0; i < fields.FieldCount; i++)
+                    {
+                        IField field = fields.get_Field(i);
+                        this.Add(field.Name, field);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error: " + ex.Message);
             }
         }
 

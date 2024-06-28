@@ -27,4 +27,11 @@ C:\Users\JULIO_CRUZ\source\repos\ControlPredios\ControlPredios\obj\Debug\Control
 C:\Users\JULIO_CRUZ\source\repos\ControlPredios\ControlPredios\obj\Debug\ControlPredios.pdb
 C:\Users\JULIO_CRUZ\source\repos\ControlPredios\ControlPredios\bin\Debug\ControlPredios.tlb
 C:\Users\JULIO_CRUZ\source\repos\ControlPredios\ControlPredios\obj\Debug\ControlPredios.csproj.AssemblyReference.cache
+C:\Users\JULIO_CRUZ\source\repos\ControlPredios\ControlPredios\bin\Debug\ESRI.ArcGIS.DisplayUI.dll
+C:\Users\JULIO_CRUZ\source\repos\ControlPredios\ControlPredios\bin\Debug\ESRI.ArcGIS.DisplayUI.xml
+C:\Users\JULIO_CRUZ\source\repos\ControlPredios\ControlPredios\bin\Debug\ESRI.ArcGIS.GeoprocessingUI.dll
+C:\Users\JULIO_CRUZ\source\repos\ControlPredios\ControlPredios\bin\Debug\ESRI.ArcGIS.ArcCatalog.dll
+C:\Users\JULIO_CRUZ\source\repos\ControlPredios\ControlPredios\bin\Debug\ESRI.ArcGIS.GeoprocessingUI.xml
+C:\Users\JULIO_CRUZ\source\repos\ControlPredios\ControlPredios\bin\Debug\ESRI.ArcGIS.ArcCatalog.xml
+C:\Users\JULIO_CRUZ\source\repos\ControlPredios\ControlPredios\bin\Debug\scripts\codificacionPrediosTotal.py
 C:\Users\JULIO_CRUZ\source\repos\ControlPredios\ControlPredios\bin\Debug\ControlPredios.esriAddIn

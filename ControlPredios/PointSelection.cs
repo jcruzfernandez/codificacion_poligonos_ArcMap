@@ -12,6 +12,7 @@ using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Geoprocessing;
+using System.Reflection;
 
 namespace ControlPredios
 {
@@ -20,8 +21,8 @@ namespace ControlPredios
         IActiveView vista;
         IMap mapa;
         IPoint punto;
-        string layerName;
-        private static string currentPath = Directory.GetCurrentDirectory();
+        public static string layerName;
+        private static string currentPath = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         string pathTool = System.IO.Path.Combine(currentPath, "scripts", "ToolboxMain.tbx");
 
         public PointSelection()
@@ -107,7 +108,9 @@ namespace ControlPredios
             geoprocessor.AddToResults = true;
             try
             {
+                
                 geoprocessor.AddToolbox(pathTool);
+                //MessageBox.Show(pathTool);
                 // Crea un objeto IVariantArray para almacenar los parámetros de la herramienta
                 IVariantArray parameters = new VarArrayClass();
                 parameters.Add(layerName);
@@ -116,7 +119,7 @@ namespace ControlPredios
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error al ejecutar la herramienta: " + e.Message);
+                MessageBox.Show("Error al ejecutar la herramienta: " + e.Message);
                 // Manejo adicional de errores aquí
             }
         }
